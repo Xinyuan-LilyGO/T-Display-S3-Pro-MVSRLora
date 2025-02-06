@@ -87,7 +87,7 @@ The T-Display-S3-Pro-MVSRLora is the backplate design for the [T-Display-S3-Pro]
 * Chip: LR1121
 * Bus communication protocol: Standard SPI
 * Related documentation: 
-    >[HPD16E_V0.1](./information/HPD16E_Series_V0.1_20230913.pdf)
+    >[HPD16E_V0.1](./information/HPD16E_Series_V0.1_20230913.pdf)  <br /> 
     >[LR1121_V2.0](./information/LR1121_H2_DS_v2_0.pdf)
 * Dependent libraries: 
     >[RadioLib-7.0.2](https://github.com/jgromes/RadioLib)

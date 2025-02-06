@@ -2,7 +2,7 @@
  * @Description: None
  * @Author: LILYGO_L
  * @Date: 2023-09-11 16:13:14
- * @LastEditTime: 2025-02-06 11:53:55
+ * @LastEditTime: 2025-02-06 12:07:44
  * @License: GPL 3.0
 -->
 <h1 align = "center">T-Display-S3-Pro-MVSRLora</h1>
@@ -78,7 +78,7 @@ T-Display-S3-Pro-MVSRLora为 [T-Display-S3-Pro](https://github.com/Xinyuan-LilyG
 * 芯片：LR1121
 * 总线通信协议：标准SPI
 * 相关资料：
-    >[HPD16E_V0.1](./information/HPD16E_Series_V0.1_20230913.pdf)
+    >[HPD16E_V0.1](./information/HPD16E_Series_V0.1_20230913.pdf)  <br /> 
     >[LR1121_V2.0](./information/LR1121_H2_DS_v2_0.pdf)
 * 依赖库：
     >[RadioLib-7.0.2](https://github.com/jgromes/RadioLib)
