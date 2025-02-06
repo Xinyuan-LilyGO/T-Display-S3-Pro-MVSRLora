@@ -2,7 +2,7 @@
  * @Description: None
  * @Author: LILYGO_L
  * @Date: 2023-09-11 16:13:14
- * @LastEditTime: 2025-02-06 12:09:54
+ * @LastEditTime: 2025-02-06 13:33:36
  * @License: GPL 3.0
 -->
 <h1 align = "center">T-Display-S3-Pro-MVSRLora</h1>
@@ -104,7 +104,6 @@ The T-Display-S3-Pro-MVSRLora is the backplate design for the [T-Display-S3-Pro]
 | [DMIC_SD](./examples/DMIC_SD) |  <p align="center">![alt text][supported] | | |
 | [Get_HTTP_Response_Time](./examples/Get_HTTP_Response_Time) |  <p align="center">![alt text][supported] | | |
 | [GFX](./examples/GFX) |  <p align="center">![alt text][supported] | | |
-| [ICM20948](./examples/ICM20948) |  <p align="center">![alt text][supported] | | |
 | [IIC_Scan_2](./examples/IIC_Scan_2) |  <p align="center">![alt text][supported] | | |
 | [LR1121_PingPong](./examples/LR1121_PingPong) |  <p align="center">![alt text][supported] | | |
 | [LR1121_PingPong_2](./examples/LR1121_PingPong_2) |  <p align="center">![alt text][supported] | | |
