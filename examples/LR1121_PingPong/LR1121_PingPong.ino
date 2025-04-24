@@ -29,7 +29,7 @@ static const Module::RfSwitchMode_t rfswitch_table[] = {
     // mode                  DIO5  DIO6
     {LR11x0::MODE_STBY, {LOW, LOW}},
     {LR11x0::MODE_RX, {HIGH, LOW}},
-    {LR11x0::MODE_TX, {HIGH, HIGH}},
+    {LR11x0::MODE_TX, {LOW, HIGH}},
     {LR11x0::MODE_TX_HP, {LOW, HIGH}},
     {LR11x0::MODE_TX_HF, {LOW, LOW}},
     {LR11x0::MODE_GNSS, {LOW, LOW}},

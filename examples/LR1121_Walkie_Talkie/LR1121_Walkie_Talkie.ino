@@ -2,7 +2,7 @@
  * @Description: LR1121_Walkie_Talkie test
  * @Author: LILYGO_L
  * @Date: 2024-12-12 14:07:33
- * @LastEditTime: 2025-02-06 10:39:10
+ * @LastEditTime: 2025-04-22 10:29:11
  * @License: GPL 3.0
  */
 #include "RadioLib.h"
@@ -33,7 +33,7 @@ static const Module::RfSwitchMode_t rfswitch_table[] = {
     // mode                  DIO5  DIO6
     {LR11x0::MODE_STBY, {LOW, LOW}},
     {LR11x0::MODE_RX, {HIGH, LOW}},
-    {LR11x0::MODE_TX, {HIGH, HIGH}},
+    {LR11x0::MODE_TX, {LOW, HIGH}},
     {LR11x0::MODE_TX_HP, {LOW, HIGH}},
     {LR11x0::MODE_TX_HF, {LOW, LOW}},
     {LR11x0::MODE_GNSS, {LOW, LOW}},
@@ -265,13 +265,13 @@ int16_t Lora_Configuration_Default_Value(lora_configuration_default_value_mode_t
     switch (mode)
     {
     case LORA_1GHZ:
-        state = radio.setFrequency(868.1);
+        state = radio.setFrequency(870.0);
         state = radio.setBandwidth(125.0, false);
         state = radio.setOutputPower(22);
         break;
     case LORA_2_4GHZ:
-        state = radio.setFrequency(2400.1);
-        state = radio.setBandwidth(812.5, true);
+        state = radio.setFrequency(2200.0);
+        state = radio.setBandwidth(125.0, false);
         state = radio.setOutputPower(13);
         break;
 
@@ -280,7 +280,7 @@ int16_t Lora_Configuration_Default_Value(lora_configuration_default_value_mode_t
     }
 
     state = radio.setSpreadingFactor(12);
-    state = radio.setCodingRate(6);
+    state = radio.setCodingRate(8);
     state = radio.setSyncWord(0xAB);
     state = radio.setPreambleLength(16);
     state = radio.setCRC(false);
@@ -498,10 +498,6 @@ void setup()
 
     SPI.begin(LR1121_SCLK, LR1121_MISO, LR1121_MOSI);
 
-    // set RF switch control configuration
-    // this has to be done prior to calling begin()
-    radio.setRfSwitchTable(rfswitch_dio_pins, rfswitch_table);
-
     // initialize LR1121 with default settings
     Serial.println("[LR1121] Initializing ... ");
 
@@ -518,6 +514,12 @@ void setup()
         while (true)
             ;
     }
+
+    // The line radio.setRfSwitchTable(rfswitch_dio_pins, rfswitch_table); must be placed after radio.begin();
+    radio.setRfSwitchTable(rfswitch_dio_pins, rfswitch_table);
+
+    // LR1121 TCXO Voltage 2.85~3.15V
+    radio.setTCXO(3.0);
 
     Lora_Configuration_Default_Value(LORA_2_4GHZ);
 

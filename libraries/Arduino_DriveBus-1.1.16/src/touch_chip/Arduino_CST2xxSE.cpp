@@ -3,8 +3,8 @@
  * @version: V1.0.0
  * @Author: Xk_w
  * @Date: 2023-11-25 09:14:02
- * @LastEditors: Xk_w
- * @LastEditTime: 2024-02-28 15:00:18
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2025-04-24 09:25:52
  * @License: GPL 3.0
  */
 #include "Arduino_CST2xxSE.h"

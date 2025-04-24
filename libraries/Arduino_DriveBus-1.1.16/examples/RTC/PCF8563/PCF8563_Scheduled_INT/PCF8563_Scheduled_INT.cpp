@@ -3,8 +3,8 @@
  * @version: V1.0.0
  * @Author: Xk_w
  * @Date: 2024-03-27 10:02:26
- * @LastEditors: Xk_w
- * @LastEditTime: 2024-06-06 18:24:02
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2025-04-23 11:18:49
  * @License: GPL 3.0
  */
 #include "Arduino_DriveBus_Library.h"

@@ -2,7 +2,7 @@
  * @Description: Original_Test
  * @Author: LILYGO_L
  * @Date: 2023-09-06 10:58:19
- * @LastEditTime: 2025-02-06 10:41:48
+ * @LastEditTime: 2025-04-22 10:36:07
  * @License: GPL 3.0
  */
 
@@ -22,7 +22,7 @@
 
 #define SOFTWARE_NAME "Original_Test"
 
-#define SOFTWARE_LASTEDITTIME "202412131703"
+#define SOFTWARE_LASTEDITTIME "202504221006"
 #define BOARD_VERSION "V1.0"
 
 // 44.1 KHz
@@ -57,7 +57,7 @@ static const Module::RfSwitchMode_t rfswitch_table[] = {
     // mode                  DIO5  DIO6
     {LR11x0::MODE_STBY, {LOW, LOW}},
     {LR11x0::MODE_RX, {HIGH, LOW}},
-    {LR11x0::MODE_TX, {HIGH, HIGH}},
+    {LR11x0::MODE_TX, {LOW, HIGH}},
     {LR11x0::MODE_TX_HP, {LOW, HIGH}},
     {LR11x0::MODE_TX_HF, {LOW, LOW}},
     {LR11x0::MODE_GNSS, {LOW, LOW}},
@@ -89,7 +89,7 @@ struct Lora_Operator
 
     struct
     {
-        float value = 868.1;
+        float value = 870.0;
         bool change_flag = false;
     } frequency;
     struct
@@ -104,7 +104,7 @@ struct Lora_Operator
     } spreading_factor;
     struct
     {
-        uint8_t value = 6;
+        uint8_t value = 8;
         bool change_flag = false;
     } coding_rate;
     struct
@@ -997,10 +997,6 @@ bool GFX_Print_LR1121_Info(void)
 
     SPI.begin(LR1121_SCLK, LR1121_MISO, LR1121_MOSI);
 
-    // set RF switch control configuration
-    // this has to be done prior to calling begin()
-    radio.setRfSwitchTable(rfswitch_dio_pins, rfswitch_table);
-
     // initialize LR1121 with default settings
     Serial.println("[LR1121] Initializing ... ");
 
@@ -1015,6 +1011,12 @@ bool GFX_Print_LR1121_Info(void)
         Serial.println(state);
         delay(500);
     }
+
+    // The line radio.setRfSwitchTable(rfswitch_dio_pins, rfswitch_table); must be placed after radio.begin();
+    radio.setRfSwitchTable(rfswitch_dio_pins, rfswitch_table);
+
+    // LR1121 TCXO Voltage 2.85~3.15V
+    radio.setTCXO(3.0);
 
     if (state == RADIOLIB_ERR_NONE)
     {
@@ -2022,12 +2024,12 @@ void Original_Test_Loop()
                         Lora_Value_Change_Mode = !Lora_Value_Change_Mode;
                         if (Lora_Value_Change_Mode == 1) // 2.4GHz模式
                         {
-                            Lora_OP.frequency.value = 2400.1;
+                            Lora_OP.frequency.value = 2200.0;
                             Lora_OP.output_power.value = 13;
                         }
                         else
                         {
-                            Lora_OP.frequency.value = 868.1;
+                            Lora_OP.frequency.value = 870.0;
                             Lora_OP.output_power.value = 22;
                         }
                         String temp_str;
@@ -2039,12 +2041,12 @@ void Original_Test_Loop()
 
                             if (Lora_Value_Change_Mode == 1) // 2.4GHz模式
                             {
-                                Lora_OP.frequency.value = 868.1;
+                                Lora_OP.frequency.value = 870.0;
                                 Lora_OP.output_power.value = 22;
                             }
                             else
                             {
-                                Lora_OP.frequency.value = 2400.1;
+                                Lora_OP.frequency.value = 2200.0;
                                 Lora_OP.output_power.value = 13;
                             }
                         }
