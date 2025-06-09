@@ -2,7 +2,7 @@
  * @Description: Original_Test
  * @Author: LILYGO_L
  * @Date: 2023-09-06 10:58:19
- * @LastEditTime: 2025-04-22 10:36:07
+ * @LastEditTime: 2025-06-07 17:53:39
  * @License: GPL 3.0
  */
 
@@ -22,7 +22,7 @@
 
 #define SOFTWARE_NAME "Original_Test"
 
-#define SOFTWARE_LASTEDITTIME "202504221006"
+#define SOFTWARE_LASTEDITTIME "202506071628"
 #define BOARD_VERSION "V1.0"
 
 // 44.1 KHz
@@ -2015,7 +2015,6 @@ void Original_Test_Loop()
                 {
                     if (millis() > CycleTime_4)
                     {
-                        Vibration_Start();
                         Lora_OP.device_1.send_flag = false;
                         Lora_OP.device_1.error_count = 11;
                         Lora_OP.device_1.send_data = 0;
@@ -2032,24 +2031,58 @@ void Original_Test_Loop()
                             Lora_OP.frequency.value = 870.0;
                             Lora_OP.output_power.value = 22;
                         }
-                        String temp_str;
-                        if (Lora_Configuration_Default_Value_Parameters(&temp_str) == false)
-                        {
-                            Serial.printf("LR1121 Failed to set default parameters\n");
-                            Serial.printf("LR1121 assertion: %s\n", temp_str.c_str());
-                            // Lora_OP.initialization_flag = false;
 
-                            if (Lora_Value_Change_Mode == 1) // 2.4GHz模式
+                        Serial.println("[LR1121] Reinitialize ... ");
+
+                        pinMode(LR1121_RST, OUTPUT);
+                        digitalWrite(LR1121_RST, HIGH);
+                        delay(100);
+                        digitalWrite(LR1121_RST, LOW);
+                        delay(100);
+                        digitalWrite(LR1121_RST, HIGH);
+                        delay(100);
+
+                        int16_t state = radio.begin();
+                        if (state == RADIOLIB_ERR_NONE)
+                        {
+                            Serial.println("success!");
+                        }
+                        else
+                        {
+                            Serial.print("failed, code ");
+                            Serial.println(state);
+                            delay(500);
+                        }
+
+                        // The line radio.setRfSwitchTable(rfswitch_dio_pins, rfswitch_table); must be placed after radio.begin();
+                        radio.setRfSwitchTable(rfswitch_dio_pins, rfswitch_table);
+
+                        // LR1121 TCXO Voltage 2.85~3.15V
+                        radio.setTCXO(3.0);
+
+                        if (state == RADIOLIB_ERR_NONE)
+                        {
+                            String temp_str;
+                            if (Lora_Configuration_Default_Value_Parameters(&temp_str) == false)
                             {
-                                Lora_OP.frequency.value = 870.0;
-                                Lora_OP.output_power.value = 22;
-                            }
-                            else
-                            {
-                                Lora_OP.frequency.value = 2200.0;
-                                Lora_OP.output_power.value = 13;
+                                Serial.printf("LR1121 Failed to set default parameters\n");
+                                Serial.printf("LR1121 assertion: %s\n", temp_str.c_str());
+                                // Lora_OP.initialization_flag = false;
+
+                                if (Lora_Value_Change_Mode == 1) // 2.4GHz模式
+                                {
+                                    Lora_OP.frequency.value = 870.0;
+                                    Lora_OP.output_power.value = 22;
+                                }
+                                else
+                                {
+                                    Lora_OP.frequency.value = 2200.0;
+                                    Lora_OP.output_power.value = 13;
+                                }
                             }
                         }
+
+                        Vibration_Start();
 
                         CycleTime_4 = millis() + 500;
                     }
