@@ -48,7 +48,7 @@ The T-Display-S3-Pro-MVSRLora is the backplate design for the [T-Display-S3-Pro]
 * Related documentation: 
     >[MAX98357A](./information/MAX98357AETE+T.pdf)
 * Dependent libraries: 
-    >[Arduino_DriveBus-1.1.16](https://github.com/Xk-w/Arduino_DriveBus)
+    >[Arduino_DriveBus-1.1.16]()
 
 ### 2. Microphone
 
@@ -58,7 +58,7 @@ The T-Display-S3-Pro-MVSRLora is the backplate design for the [T-Display-S3-Pro]
 > * Related documentation: 
 >    >[MSM261S4030H0R](./information/MEMSensing-MSM261S4030H0R.pdf)
 > * Dependent libraries: 
->     >[Arduino_DriveBus-1.1.16](https://github.com/Xk-w/Arduino_DriveBus)
+>     >[Arduino_DriveBus-1.1.16]()
 
 > #### T-Display-S3-Pro-MVSRLora_V1.1 version
 > * Chip: MP34DT05-A
@@ -66,7 +66,7 @@ The T-Display-S3-Pro-MVSRLora is the backplate design for the [T-Display-S3-Pro]
 > * Related documentation: 
 >    >[MP34DT05-A](./information/mp34dt05-a.pdf)
 > * Dependent libraries: 
->    >[Arduino_DriveBus-1.1.16](https://github.com/Xk-w/Arduino_DriveBus)
+>    >[Arduino_DriveBus-1.1.16]()
 
 ### 3. Vibration
 
@@ -79,7 +79,7 @@ The T-Display-S3-Pro-MVSRLora is the backplate design for the [T-Display-S3-Pro]
 * Related documentation: 
     >[PCF85063ATL](./information/PCF85063ATL-1,118.pdf)
 * Dependent libraries: 
-    >[Arduino_DriveBus-1.1.16](https://github.com/Xk-w/Arduino_DriveBus)
+    >[Arduino_DriveBus-1.1.16]()
 
 ### 5. Lora
 

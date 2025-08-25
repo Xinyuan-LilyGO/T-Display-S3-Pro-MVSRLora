@@ -48,7 +48,7 @@ T-Display-S3-Pro-MVSRLora为 [T-Display-S3-Pro](https://github.com/Xinyuan-LilyG
 * 相关资料：
     >[MAX98357A](./information/MAX98357AETE+T.pdf)
 * 依赖库：
-    >[Arduino_DriveBus-1.1.16](https://github.com/Xk-w/Arduino_DriveBus)
+    >[Arduino_DriveBus-1.1.16]()
 
 ### 2. 麦克风
 
@@ -57,7 +57,7 @@ T-Display-S3-Pro-MVSRLora为 [T-Display-S3-Pro](https://github.com/Xinyuan-LilyG
 * 相关资料：
    >[MP34DT05-A](./information/mp34dt05-a.pdf)
 * 依赖库：
-   >[Arduino_DriveBus-1.1.16](https://github.com/Xk-w/Arduino_DriveBus)
+   >[Arduino_DriveBus-1.1.16]()
 
 ### 3. 振动
 
@@ -70,7 +70,7 @@ T-Display-S3-Pro-MVSRLora为 [T-Display-S3-Pro](https://github.com/Xinyuan-LilyG
 * 相关资料：
     >[PCF85063ATL](./information/PCF85063ATL-1,118.pdf)
 * 依赖库：
-    >[Arduino_DriveBus-1.1.16](https://github.com/Xk-w/Arduino_DriveBus)
+    >[Arduino_DriveBus-1.1.16]()
 
 ### 5. Lora
 
