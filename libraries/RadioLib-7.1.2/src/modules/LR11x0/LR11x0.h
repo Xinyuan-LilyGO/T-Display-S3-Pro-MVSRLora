@@ -1623,7 +1623,7 @@ class LR11x0: public PhysicalLayer {
     int16_t calibrateImageRejection(float freqMin, float freqMax);
     
 #if !RADIOLIB_GODMODE && !RADIOLIB_LOW_LEVEL
-  protected:
+  public:
 #endif
     Module* getMod() override;
 
