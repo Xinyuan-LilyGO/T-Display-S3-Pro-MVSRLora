@@ -2,7 +2,7 @@
  * @Description: Original_Test
  * @Author: LILYGO_L
  * @Date: 2023-09-06 10:58:19
- * @LastEditTime: 2025-06-07 17:53:39
+ * @LastEditTime: 2026-03-31 10:33:41
  * @License: GPL 3.0
  */
 
@@ -22,7 +22,7 @@
 
 #define SOFTWARE_NAME "Original_Test"
 
-#define SOFTWARE_LASTEDITTIME "202506071628"
+#define SOFTWARE_LASTEDITTIME "202603311030"
 #define BOARD_VERSION "V1.0"
 
 // 44.1 KHz
@@ -644,6 +644,13 @@ void GFX_Print_RTC_Info_Loop()
                 (int32_t)PCF85063->IIC_Read_Device_Value(PCF85063->Arduino_IIC_RTC::Value_Information::RTC_HOURS_DATA),
                 (int32_t)PCF85063->IIC_Read_Device_Value(PCF85063->Arduino_IIC_RTC::Value_Information::RTC_MINUTES_DATA),
                 (int32_t)PCF85063->IIC_Read_Device_Value(PCF85063->Arduino_IIC_RTC::Value_Information::RTC_SECONDS_DATA));
+
+    gfx->setCursor(20, 135);
+    gfx->printf("Charge: %s \n",
+                (SY6970->IIC_Read_Device_State(SY6970->Arduino_IIC_Power::Status_Information::POWER_CHARGING_STATUS)).c_str());
+    gfx->setCursor(20, 150);
+    gfx->printf("Battery: %d mV \n",
+                (int32_t)SY6970->IIC_Read_Device_Value(SY6970->Arduino_IIC_Power::Value_Information::POWER_BATTERY_VOLTAGE));
 }
 
 void GFX_Print_RTC_Switch_Info()
@@ -1155,6 +1162,8 @@ void GFX_Print_LR1121_Info_Loop()
 
                 radio.transmit(Lora_OP.send_package, 16);
                 radio.startReceive();
+
+                Lora_OP.transmission_flag = false;
             }
         }
         // }
