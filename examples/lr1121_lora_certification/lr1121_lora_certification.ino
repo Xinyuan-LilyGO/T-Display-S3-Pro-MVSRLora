@@ -167,5 +167,6 @@ void loop()
     radio.setTx(0xFFFFFF);
     delay(500);
     radio.standby();
-    delay(500);
+    // delay(500);
+    delay(600000);
 }
